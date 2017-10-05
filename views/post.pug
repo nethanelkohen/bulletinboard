@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title Post a Message
+    link(rel='stylesheet', href='../styles/main.css')
+  body
+    h1 Post Something
+    form(action='/post', method='POST')
+      label(for='title') Title
+      input(type='text', name='title', required=true)
+      label(for='textArea') Body
+      textarea(rows='10', cols='40', name='msg', required=true)
+      button Post
+      br
+      br
+    a(href='/')
+      button View Posts

@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+  title Bulletin Board
+  link(rel='stylesheet', href='../styles/main.css')
+  body
+    h1 Bulletin Board
+    - for (var i = results.length - 1; i >= 0; --i) {
+      h2= results[i].title
+      p= results[i].body
+    - }
+    br
+    a(href='/post') 
+      button Post Message    
