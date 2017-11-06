@@ -1,11 +1,11 @@
 var Sequelize = require("sequelize");
 
 var sequelize = new Sequelize({
-    username: 'nethanelkohen',
+    username: process.env.DB_USER,
     dialect: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    database: 'bulletinboard'
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT || 5432,
+    database: process.env.DB_NAME,
 });
 
 var Messages = sequelize.define('message',{
@@ -18,7 +18,8 @@ var Messages = sequelize.define('message',{
         allowNull: false
     },
     created: {
-        type: Sequelize.DATEONLY
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW
       }
 });
 

@@ -7,9 +7,9 @@ html
     h1 Post Something
     form(action='/post', method='POST')
       label(for='title') Title
-      input(type='text', name='title', required=true)
+      input(type='text', name='title')
       label(for='textArea') Body
-      textarea(rows='10', cols='40', name='msg', required=true)
+      textarea(rows='10', cols='40', name='msg')
       button Post
       br
       br
