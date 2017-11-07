@@ -26,24 +26,22 @@ app.get('/post', function(request, response) {
   response.render('post');
 });
 
-
 app.post('/post', function(request, response) {
   request.checkBody('title', 'Title cannot be empty.').notEmpty();
-  request.checkBody('body', "Body cannot be empty").notEmpty();
+  request.checkBody('msg', "Body cannot be empty").notEmpty();
   const errors = request.validationErrors();
   if (errors) {
     response.render('errors', {
       errors
     });
-    // return response.status(422).json({
-    //   errors
-    // });
   } else {
-    Messages.create({
-      title: request.body.title,
-      body: request.body.msg
+    Messages.sync().then(function() {
+      Messages.create({
+        title: request.body.title,
+        body: request.body.msg
+      });
+      response.redirect('/');
     });
-    response.redirect('/');
   }
 });
 
